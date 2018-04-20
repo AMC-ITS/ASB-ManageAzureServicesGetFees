@@ -9,7 +9,9 @@ namespace ASB_ManageAzureServicesGetFees
     {
         #region Local Members
 
-        private static string ServiceBusEndpoint = "Endpoint=sb://{0}.servicebus.windows.net/";
+        private static string TemplatePieceKeyName = "[KeyName]";
+        private static string TemplatePieceKey = "[Key]";
+        private static string TemplatePieceServiceName = "[ServiceName]";
         private static string BaseServiceBusEndpoint = "sb://{0}.servicebus.windows.net/";
 
         #endregion
@@ -25,11 +27,12 @@ namespace ASB_ManageAzureServicesGetFees
         /// </remarks>
         public static string AzureServiceConnectionString(this EnvironmentType environment)
         {
-            string key = environment.AzureServiceKeyValue();
-            string keyName = environment.AzureServiceKeyName();
-            string endpoint = string.Format(ServiceBusEndpoint, environment.AzureServiceName());
+            string newValue = environment.AzureServiceConnectionTemplate()
+                .Replace(TemplatePieceServiceName, environment.AzureServiceName())
+                .Replace(TemplatePieceKeyName, environment.AzureServiceKeyName())
+                .Replace(TemplatePieceKey, environment.AzureServiceKeyValue());
 
-            return $"{endpoint};SharedAccessKeyName={keyName};SharedAccessKey={key}";
+            return newValue;
         }
 
         /// <summary>
@@ -79,7 +82,12 @@ namespace ASB_ManageAzureServicesGetFees
         /// <remarks>
         /// This is a required parameter for creating the ConnectionString.
         /// </remarks>
-        public static string AzureServiceName(this EnvironmentType environment) => $"AMC{environment.ShortName()}";
+        public static string AzureServiceName(this EnvironmentType environment)
+        {
+            string configKeyName = $"ASB_ServiceName_{environment.ShortName()}";
+
+            return ConfigurationManager.AppSettings[configKeyName];
+        }
 
         /// <summary>
         /// Get the name of the Key, from the app.config file, required for connecting to an Azure Service Bus.
@@ -98,9 +106,19 @@ namespace ASB_ManageAzureServicesGetFees
         /// </summary>
         public static string AzureServiceKeyValue(this EnvironmentType environment)
         {
-            string configKeyValue = $"ASB_KeyValue_{environment.ShortName()}";
+            string configKeyName = $"ASB_KeyValue_{environment.ShortName()}";
 
-            return ConfigurationManager.AppSettings[configKeyValue];
+            return ConfigurationManager.AppSettings[configKeyName];
+        }
+
+        /// <summary>
+        /// Get the Connection String Template, from the app.config file, required for connecting to an Azure Service Bus.
+        /// </summary>
+        public static string AzureServiceConnectionTemplate(this EnvironmentType environment)
+        {
+            string configKeyName = $"ASB_ConnectionString_{environment.ShortName()}";
+
+            return ConfigurationManager.AppSettings[configKeyName];
         }
 
         #endregion

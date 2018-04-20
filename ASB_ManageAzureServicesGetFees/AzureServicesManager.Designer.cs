@@ -1,6 +1,6 @@
 ﻿namespace ASB_ManageAzureServicesGetFees
 {
-    partial class Form1
+    partial class AzureServicesManager
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AzureServicesManager));
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabDev = new System.Windows.Forms.TabPage();
@@ -48,8 +48,8 @@
             this.txtNameQueueDEV = new System.Windows.Forms.TextBox();
             this.txtUriDEV = new System.Windows.Forms.TextBox();
             this.txtPrefixDev = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblSubscriptionsFailuresDEV = new System.Windows.Forms.Label();
+            this.lblSubscriptionsSuccessfulDEV = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,8 +70,8 @@
             this.txtNameQueueUAT = new System.Windows.Forms.TextBox();
             this.txtUriUAT = new System.Windows.Forms.TextBox();
             this.txtPrefixUAT = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblSubscriptionsFailuresUAT = new System.Windows.Forms.Label();
+            this.lblSubscriptionsSuccessfulUAT = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -92,8 +92,8 @@
             this.txtNameQueueSTG = new System.Windows.Forms.TextBox();
             this.txtUriSTG = new System.Windows.Forms.TextBox();
             this.txtPrefixSTG = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblSubscriptionsFailuresSTG = new System.Windows.Forms.Label();
+            this.lblSubscriptionsSuccessfulSTG = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -114,8 +114,8 @@
             this.txtNameQueuePRD = new System.Windows.Forms.TextBox();
             this.txtUriPRD = new System.Windows.Forms.TextBox();
             this.txtPrefixPRD = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.lblSubscriptionsFailuresPRD = new System.Windows.Forms.Label();
+            this.lblSubscriptionsSuccessfulPRD = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -123,6 +123,7 @@
             this.label29 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabDev.SuspendLayout();
             this.pnlDev.SuspendLayout();
@@ -194,8 +195,8 @@
             this.pnlDev.Controls.Add(this.txtNameQueueDEV);
             this.pnlDev.Controls.Add(this.txtUriDEV);
             this.pnlDev.Controls.Add(this.txtPrefixDev);
-            this.pnlDev.Controls.Add(this.label8);
-            this.pnlDev.Controls.Add(this.label7);
+            this.pnlDev.Controls.Add(this.lblSubscriptionsFailuresDEV);
+            this.pnlDev.Controls.Add(this.lblSubscriptionsSuccessfulDEV);
             this.pnlDev.Controls.Add(this.label6);
             this.pnlDev.Controls.Add(this.label5);
             this.pnlDev.Controls.Add(this.label4);
@@ -251,6 +252,7 @@
             this.btnCopySuccessesDEV.Text = "Copy Successes";
             this.btnCopySuccessesDEV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopySuccessesDEV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopySuccessesDEV, "Copy the list of Successes to the clipboard.");
             this.btnCopySuccessesDEV.UseVisualStyleBackColor = true;
             this.btnCopySuccessesDEV.Click += new System.EventHandler(this.btnCopySuccessesDEV_Click);
             // 
@@ -279,6 +281,7 @@
             this.btnCopyFailuresDEV.Text = "Copy Failures";
             this.btnCopyFailuresDEV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopyFailuresDEV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopyFailuresDEV, "Copy the list of Failures to the clipboard.");
             this.btnCopyFailuresDEV.UseVisualStyleBackColor = true;
             this.btnCopyFailuresDEV.Click += new System.EventHandler(this.btnCopyFailuresDEV_Click);
             // 
@@ -297,6 +300,8 @@
             this.btnDeleteServicesDEV.Text = "Delete Services";
             this.btnDeleteServicesDEV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteServicesDEV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnDeleteServicesDEV, "After confirming you really want to DELETE, remove all the Message Queue, Topic a" +
+        "nd Subscriptions from the DEV Azure Service Bus.");
             this.btnDeleteServicesDEV.UseVisualStyleBackColor = true;
             this.btnDeleteServicesDEV.Click += new System.EventHandler(this.btnDeleteServicesDEV_Click);
             // 
@@ -315,6 +320,8 @@
             this.btnCreateServicesDEV.Text = "Create Services";
             this.btnCreateServicesDEV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateServicesDEV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCreateServicesDEV, "Create, if non existant, the Message Queue, Topic and Subscriptions for the DEV l" +
+        "ane.");
             this.btnCreateServicesDEV.UseVisualStyleBackColor = true;
             this.btnCreateServicesDEV.Click += new System.EventHandler(this.btnCreateServicesDEV_Click);
             // 
@@ -382,23 +389,23 @@
             this.txtPrefixDev.TabIndex = 12;
             this.txtPrefixDev.Text = "DEV";
             // 
-            // label8
+            // lblSubscriptionsFailuresDEV
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(534, 75);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 16);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Failed";
+            this.lblSubscriptionsFailuresDEV.AutoSize = true;
+            this.lblSubscriptionsFailuresDEV.Location = new System.Drawing.Point(534, 75);
+            this.lblSubscriptionsFailuresDEV.Name = "lblSubscriptionsFailuresDEV";
+            this.lblSubscriptionsFailuresDEV.Size = new System.Drawing.Size(42, 16);
+            this.lblSubscriptionsFailuresDEV.TabIndex = 11;
+            this.lblSubscriptionsFailuresDEV.Text = "Failed";
             // 
-            // label7
+            // lblSubscriptionsSuccessfulDEV
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(188, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 16);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Successful";
+            this.lblSubscriptionsSuccessfulDEV.AutoSize = true;
+            this.lblSubscriptionsSuccessfulDEV.Location = new System.Drawing.Point(188, 75);
+            this.lblSubscriptionsSuccessfulDEV.Name = "lblSubscriptionsSuccessfulDEV";
+            this.lblSubscriptionsSuccessfulDEV.Size = new System.Drawing.Size(68, 16);
+            this.lblSubscriptionsSuccessfulDEV.TabIndex = 10;
+            this.lblSubscriptionsSuccessfulDEV.Text = "Successful";
             // 
             // label6
             // 
@@ -471,8 +478,8 @@
             this.panel3.Controls.Add(this.txtNameQueueUAT);
             this.panel3.Controls.Add(this.txtUriUAT);
             this.panel3.Controls.Add(this.txtPrefixUAT);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.lblSubscriptionsFailuresUAT);
+            this.panel3.Controls.Add(this.lblSubscriptionsSuccessfulUAT);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label13);
@@ -512,6 +519,8 @@
             this.btnDeleteServicesUAT.Text = "Delete Services";
             this.btnDeleteServicesUAT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteServicesUAT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnDeleteServicesUAT, "After confirming you really want to DELETE, remove all the Message Queue, Topic a" +
+        "nd Subscriptions from the UAT Azure Service Bus.");
             this.btnDeleteServicesUAT.UseVisualStyleBackColor = true;
             this.btnDeleteServicesUAT.Click += new System.EventHandler(this.btnDeleteServicesUAT_Click);
             // 
@@ -546,6 +555,7 @@
             this.btnCopySuccessesUAT.Text = "Copy Successes";
             this.btnCopySuccessesUAT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopySuccessesUAT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopySuccessesUAT, "Copy the list of Successes to the clipboard.");
             this.btnCopySuccessesUAT.UseVisualStyleBackColor = true;
             this.btnCopySuccessesUAT.Click += new System.EventHandler(this.btnCopySuccessesUAT_Click);
             // 
@@ -564,6 +574,7 @@
             this.btnCopyFailuresUAT.Text = "Copy Failures";
             this.btnCopyFailuresUAT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopyFailuresUAT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopyFailuresUAT, "Copy the list of Failures to the clipboard.");
             this.btnCopyFailuresUAT.UseVisualStyleBackColor = true;
             this.btnCopyFailuresUAT.Click += new System.EventHandler(this.btnCopyFailuresUAT_Click);
             // 
@@ -582,6 +593,8 @@
             this.btnCreateServicesUAT.Text = "Create Services";
             this.btnCreateServicesUAT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateServicesUAT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCreateServicesUAT, "Create, if non existant, the Message Queue, Topic and Subscriptions for the UAT l" +
+        "ane.");
             this.btnCreateServicesUAT.UseVisualStyleBackColor = true;
             this.btnCreateServicesUAT.Click += new System.EventHandler(this.btnCreateServicesUAT_Click);
             // 
@@ -649,23 +662,23 @@
             this.txtPrefixUAT.TabIndex = 12;
             this.txtPrefixUAT.Text = "UAT";
             // 
-            // label9
+            // lblSubscriptionsFailuresUAT
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(534, 75);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 16);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Failed";
+            this.lblSubscriptionsFailuresUAT.AutoSize = true;
+            this.lblSubscriptionsFailuresUAT.Location = new System.Drawing.Point(534, 75);
+            this.lblSubscriptionsFailuresUAT.Name = "lblSubscriptionsFailuresUAT";
+            this.lblSubscriptionsFailuresUAT.Size = new System.Drawing.Size(42, 16);
+            this.lblSubscriptionsFailuresUAT.TabIndex = 11;
+            this.lblSubscriptionsFailuresUAT.Text = "Failed";
             // 
-            // label10
+            // lblSubscriptionsSuccessfulUAT
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(188, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 16);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Successful";
+            this.lblSubscriptionsSuccessfulUAT.AutoSize = true;
+            this.lblSubscriptionsSuccessfulUAT.Location = new System.Drawing.Point(188, 75);
+            this.lblSubscriptionsSuccessfulUAT.Name = "lblSubscriptionsSuccessfulUAT";
+            this.lblSubscriptionsSuccessfulUAT.Size = new System.Drawing.Size(68, 16);
+            this.lblSubscriptionsSuccessfulUAT.TabIndex = 10;
+            this.lblSubscriptionsSuccessfulUAT.Text = "Successful";
             // 
             // label11
             // 
@@ -738,8 +751,8 @@
             this.panel4.Controls.Add(this.txtNameQueueSTG);
             this.panel4.Controls.Add(this.txtUriSTG);
             this.panel4.Controls.Add(this.txtPrefixSTG);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.lblSubscriptionsFailuresSTG);
+            this.panel4.Controls.Add(this.lblSubscriptionsSuccessfulSTG);
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.label20);
@@ -779,6 +792,8 @@
             this.btnDeleteServicesSTG.Text = "Delete Services";
             this.btnDeleteServicesSTG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteServicesSTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnDeleteServicesSTG, "After confirming you really want to DELETE, remove all the Message Queue, Topic a" +
+        "nd Subscriptions from the STG Azure Service Bus.");
             this.btnDeleteServicesSTG.UseVisualStyleBackColor = true;
             this.btnDeleteServicesSTG.Click += new System.EventHandler(this.btnDeleteServicesSTG_Click);
             // 
@@ -813,6 +828,7 @@
             this.btnCopySuccessesSTG.Text = "Copy Successes";
             this.btnCopySuccessesSTG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopySuccessesSTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopySuccessesSTG, "Copy the list of Successes to the clipboard.");
             this.btnCopySuccessesSTG.UseVisualStyleBackColor = true;
             this.btnCopySuccessesSTG.Click += new System.EventHandler(this.btnCopySuccessesSTG_Click);
             // 
@@ -831,6 +847,7 @@
             this.btnCopyFailuresSTG.Text = "Copy Failures";
             this.btnCopyFailuresSTG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopyFailuresSTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopyFailuresSTG, "Copy the list of Failures to the clipboard.");
             this.btnCopyFailuresSTG.UseVisualStyleBackColor = true;
             this.btnCopyFailuresSTG.Click += new System.EventHandler(this.btnCopyFailuresSTG_Click);
             // 
@@ -849,6 +866,8 @@
             this.btnCreateServicesSTG.Text = "Create Services";
             this.btnCreateServicesSTG.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateServicesSTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCreateServicesSTG, "Create, if non existant, the Message Queue, Topic and Subscriptions for the STG l" +
+        "ane.");
             this.btnCreateServicesSTG.UseVisualStyleBackColor = true;
             this.btnCreateServicesSTG.Click += new System.EventHandler(this.btnCreateServicesSTG_Click);
             // 
@@ -916,23 +935,23 @@
             this.txtPrefixSTG.TabIndex = 12;
             this.txtPrefixSTG.Text = "STG";
             // 
-            // label16
+            // lblSubscriptionsFailuresSTG
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(534, 75);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 16);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Failed";
+            this.lblSubscriptionsFailuresSTG.AutoSize = true;
+            this.lblSubscriptionsFailuresSTG.Location = new System.Drawing.Point(534, 75);
+            this.lblSubscriptionsFailuresSTG.Name = "lblSubscriptionsFailuresSTG";
+            this.lblSubscriptionsFailuresSTG.Size = new System.Drawing.Size(42, 16);
+            this.lblSubscriptionsFailuresSTG.TabIndex = 11;
+            this.lblSubscriptionsFailuresSTG.Text = "Failed";
             // 
-            // label17
+            // lblSubscriptionsSuccessfulSTG
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(188, 75);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 16);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "Successful";
+            this.lblSubscriptionsSuccessfulSTG.AutoSize = true;
+            this.lblSubscriptionsSuccessfulSTG.Location = new System.Drawing.Point(188, 75);
+            this.lblSubscriptionsSuccessfulSTG.Name = "lblSubscriptionsSuccessfulSTG";
+            this.lblSubscriptionsSuccessfulSTG.Size = new System.Drawing.Size(68, 16);
+            this.lblSubscriptionsSuccessfulSTG.TabIndex = 10;
+            this.lblSubscriptionsSuccessfulSTG.Text = "Successful";
             // 
             // label18
             // 
@@ -1005,8 +1024,8 @@
             this.panel5.Controls.Add(this.txtNameQueuePRD);
             this.panel5.Controls.Add(this.txtUriPRD);
             this.panel5.Controls.Add(this.txtPrefixPRD);
-            this.panel5.Controls.Add(this.label23);
-            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.lblSubscriptionsFailuresPRD);
+            this.panel5.Controls.Add(this.lblSubscriptionsSuccessfulPRD);
             this.panel5.Controls.Add(this.label25);
             this.panel5.Controls.Add(this.label26);
             this.panel5.Controls.Add(this.label27);
@@ -1046,6 +1065,8 @@
             this.btnDeleteServicesPRD.Text = "Delete Services";
             this.btnDeleteServicesPRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeleteServicesPRD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnDeleteServicesPRD, "After confirming you really want to DELETE, remove all the Message Queue, Topic a" +
+        "nd Subscriptions from the PRD Azure Service Bus.");
             this.btnDeleteServicesPRD.UseVisualStyleBackColor = true;
             this.btnDeleteServicesPRD.Click += new System.EventHandler(this.btnDeleteServicesPRD_Click);
             // 
@@ -1080,6 +1101,7 @@
             this.btnCopySuccessesPRD.Text = "Copy Successes";
             this.btnCopySuccessesPRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopySuccessesPRD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopySuccessesPRD, "Copy the list of Successes to the clipboard.");
             this.btnCopySuccessesPRD.UseVisualStyleBackColor = true;
             this.btnCopySuccessesPRD.Click += new System.EventHandler(this.btnCopySuccessesPRD_Click);
             // 
@@ -1098,6 +1120,7 @@
             this.btnCopyFailuresPRD.Text = "Copy Failures";
             this.btnCopyFailuresPRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopyFailuresPRD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCopyFailuresPRD, "Copy the list of Failures to the clipboard.");
             this.btnCopyFailuresPRD.UseVisualStyleBackColor = true;
             this.btnCopyFailuresPRD.Click += new System.EventHandler(this.btnCopyFailuresPRD_Click);
             // 
@@ -1116,6 +1139,8 @@
             this.btnCreateServicesPRD.Text = "Create Services";
             this.btnCreateServicesPRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateServicesPRD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnCreateServicesPRD, "Create, if non existant, the Message Queue, Topic and Subscriptions for the PRD l" +
+        "ane.");
             this.btnCreateServicesPRD.UseVisualStyleBackColor = true;
             this.btnCreateServicesPRD.Click += new System.EventHandler(this.btnCreateServicesPRD_Click);
             // 
@@ -1183,23 +1208,23 @@
             this.txtPrefixPRD.TabIndex = 12;
             this.txtPrefixPRD.Text = "PRD";
             // 
-            // label23
+            // lblSubscriptionsFailuresPRD
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(534, 75);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(42, 16);
-            this.label23.TabIndex = 11;
-            this.label23.Text = "Failed";
+            this.lblSubscriptionsFailuresPRD.AutoSize = true;
+            this.lblSubscriptionsFailuresPRD.Location = new System.Drawing.Point(534, 75);
+            this.lblSubscriptionsFailuresPRD.Name = "lblSubscriptionsFailuresPRD";
+            this.lblSubscriptionsFailuresPRD.Size = new System.Drawing.Size(42, 16);
+            this.lblSubscriptionsFailuresPRD.TabIndex = 11;
+            this.lblSubscriptionsFailuresPRD.Text = "Failed";
             // 
-            // label24
+            // lblSubscriptionsSuccessfulPRD
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(188, 75);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(68, 16);
-            this.label24.TabIndex = 10;
-            this.label24.Text = "Successful";
+            this.lblSubscriptionsSuccessfulPRD.AutoSize = true;
+            this.lblSubscriptionsSuccessfulPRD.Location = new System.Drawing.Point(188, 75);
+            this.lblSubscriptionsSuccessfulPRD.Name = "lblSubscriptionsSuccessfulPRD";
+            this.lblSubscriptionsSuccessfulPRD.Size = new System.Drawing.Size(68, 16);
+            this.lblSubscriptionsSuccessfulPRD.TabIndex = 10;
+            this.lblSubscriptionsSuccessfulPRD.Text = "Successful";
             // 
             // label25
             // 
@@ -1265,7 +1290,7 @@
             this.panel2.Size = new System.Drawing.Size(915, 312);
             this.panel2.TabIndex = 3;
             // 
-            // Form1
+            // AzureServicesManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1275,8 +1300,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Form1";
+            this.Name = "AzureServicesManager";
             this.Text = "Get Fees:  Queues / Topics / Subscriptions";
             this.tabControl1.ResumeLayout(false);
             this.tabDev.ResumeLayout(false);
@@ -1322,8 +1348,8 @@
         private System.Windows.Forms.TextBox txtNameQueueDEV;
         private System.Windows.Forms.TextBox txtUriDEV;
         private System.Windows.Forms.TextBox txtPrefixDev;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSubscriptionsFailuresDEV;
+        private System.Windows.Forms.Label lblSubscriptionsSuccessfulDEV;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -1343,8 +1369,8 @@
         private System.Windows.Forms.TextBox txtNameQueueUAT;
         private System.Windows.Forms.TextBox txtUriUAT;
         private System.Windows.Forms.TextBox txtPrefixUAT;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblSubscriptionsFailuresUAT;
+        private System.Windows.Forms.Label lblSubscriptionsSuccessfulUAT;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -1360,8 +1386,8 @@
         private System.Windows.Forms.TextBox txtNameQueueSTG;
         private System.Windows.Forms.TextBox txtUriSTG;
         private System.Windows.Forms.TextBox txtPrefixSTG;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lblSubscriptionsFailuresSTG;
+        private System.Windows.Forms.Label lblSubscriptionsSuccessfulSTG;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
@@ -1377,8 +1403,8 @@
         private System.Windows.Forms.TextBox txtNameQueuePRD;
         private System.Windows.Forms.TextBox txtUriPRD;
         private System.Windows.Forms.TextBox txtPrefixPRD;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblSubscriptionsFailuresPRD;
+        private System.Windows.Forms.Label lblSubscriptionsSuccessfulPRD;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
@@ -1400,6 +1426,7 @@
         private System.Windows.Forms.Label lblActionDEV;
         private System.Windows.Forms.Label lblActionSTG;
         private System.Windows.Forms.Label lblActionPRD;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

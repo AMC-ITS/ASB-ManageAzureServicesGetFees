@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ASB_ManageAzureServicesGetFees
 {
-    public partial class Form1 : Form
+    public partial class AzureServicesManager : Form
     {
         #region Properties
 
@@ -18,7 +18,7 @@ namespace ASB_ManageAzureServicesGetFees
 
         #region Constructor
 
-        public Form1()
+        public AzureServicesManager()
         {
             InitializeComponent();
         }
@@ -120,9 +120,6 @@ namespace ASB_ManageAzureServicesGetFees
             IsWorking = true;
             IsDeleting = false;
 
-            bool queueExists = false;
-            bool topicExists = false;
-
             Cursor = Cursors.WaitCursor;
             InitializeUi(environment);
 
@@ -130,8 +127,11 @@ namespace ASB_ManageAzureServicesGetFees
             {
                 AzureServicesHelper azureServices = new AzureServicesHelper(environment);
 
-                queueExists = azureServices.CreateQueue();
-                topicExists = azureServices.CreateTopic();
+                var queueExists = azureServices.CreateQueue();
+                var topicExists = azureServices.CreateTopic();
+                ShowQueueCreationSuccess(queueExists, environment);
+                ShowTopicCreationSuccess(topicExists, environment);
+                Application.DoEvents();
 
                 if (topicExists)
                 {
@@ -139,14 +139,15 @@ namespace ASB_ManageAzureServicesGetFees
                     {
                         bool subscriptionExists = azureServices.CreateSubscription(subscriptionName);
 
-                        AddEntryToSuccessFailureList(subscriptionExists, subscriptionName, environment);
+                        UpdateUiForSubscriptionSuccess(subscriptionExists, subscriptionName, environment);
+                        Application.DoEvents();
                     }
                 }
                 else
                 {
                     foreach (string subscriptionName in azureServices.SubscriptionNames)
                     {
-                        AddEntryToSuccessFailureList(false, subscriptionName, environment);
+                        UpdateUiForSubscriptionSuccess(false, subscriptionName, environment);
                     }
                 }
             }
@@ -159,8 +160,6 @@ namespace ASB_ManageAzureServicesGetFees
             }
             finally
             {
-                ShowQueueCreationSuccess(queueExists, environment);
-                ShowTopicCreationSuccess(topicExists, environment);
                 IsWorking = false;
                 UpdateUiWithActionMessage(environment);
                 Cursor = Cursors.Default;
@@ -179,7 +178,6 @@ namespace ASB_ManageAzureServicesGetFees
             IsWorking = true;
             IsDeleting = true;
 
-            bool queueDeleted = false;
             bool topicDeleted = false;
 
             Cursor = Cursors.WaitCursor;
@@ -189,8 +187,10 @@ namespace ASB_ManageAzureServicesGetFees
             {
                 AzureServicesHelper azureServices = new AzureServicesHelper(environment);
 
-                queueDeleted = azureServices.DeleteQueue();
+                var queueDeleted = azureServices.DeleteQueue();
                 topicDeleted = !azureServices.TopicExists;
+                ShowQueueCreationSuccess(queueDeleted, environment);
+                Application.DoEvents();
 
                 if (!topicDeleted)
                 {
@@ -198,7 +198,7 @@ namespace ASB_ManageAzureServicesGetFees
                     {
                         bool subscriptionDeleted = azureServices.DeleteSubscription(subscriptionName);
 
-                        AddEntryToSuccessFailureList(subscriptionDeleted, subscriptionName, environment);
+                        UpdateUiForSubscriptionSuccess(subscriptionDeleted, subscriptionName, environment);
                         Application.DoEvents();
                     }
                     topicDeleted = azureServices.DeleteTopic();
@@ -207,7 +207,7 @@ namespace ASB_ManageAzureServicesGetFees
                 {
                     foreach (string subscriptionName in azureServices.SubscriptionNames)
                     {
-                        AddEntryToSuccessFailureList(true, subscriptionName, environment);
+                        UpdateUiForSubscriptionSuccess(true, subscriptionName, environment);
                     }
                 }
             }
@@ -219,12 +219,23 @@ namespace ASB_ManageAzureServicesGetFees
             }
             finally
             {
-                ShowQueueCreationSuccess(queueDeleted, environment);
                 ShowTopicCreationSuccess(topicDeleted, environment);
                 IsWorking = false;
                 UpdateUiWithActionMessage(environment);
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void HandleRequestToCopyText(EnvironmentType environment, bool copySuccesses)
+        {
+            string entriesList = GetSuccessListForEnvironment(environment, copySuccesses);
+            string success = copySuccesses ? "Successful" : "Failed";
+            string action = IsDeleting ? "deleted" : "created";
+            string caption = $"{success} {action} Subscription value(s) for {environment.ShortName()}";
+            string clipboardText = $"{caption}{Environment.NewLine}{entriesList}";
+
+            Clipboard.Clear();
+            Clipboard.SetText(clipboardText);
         }
 
         private void InitializeUi(EnvironmentType environment)
@@ -272,20 +283,6 @@ namespace ASB_ManageAzureServicesGetFees
             }
         }
 
-        private void HandleRequestToCopyText(EnvironmentType environment, bool copySuccesses)
-        {
-            string entriesList = GetSuccessListForEnvironment(environment, copySuccesses);
-            string success = copySuccesses ? "Successful" : "Failed";
-            string action = IsDeleting ? "deleted" : "created";
-            string caption = $"{success} {action} Subscription value(s) for {environment.ShortName()}";
-            string clipboardText = $"{caption}{Environment.NewLine}{entriesList}";
-
-            Clipboard.Clear();
-            Clipboard.SetText(clipboardText);
-
-            MessageBox.Show(entriesList, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private TextBox GetControlForEnvironmentAndSuccess(EnvironmentType environment, bool isSuccess)
         {
             TextBox control = null;
@@ -296,13 +293,36 @@ namespace ASB_ManageAzureServicesGetFees
                     control = isSuccess ? txtNamesSubscriptionsSuccessfulDEV : txtNamesSubscriptionsFailuresDEV;
                     break;
                 case EnvironmentType.UserAcceptanceTesting:
-                    control = isSuccess ? txtNamesSubscriptionsSuccessfulSTG : txtNamesSubscriptionsFailuresSTG;
+                    control = isSuccess ? txtNamesSubscriptionsSuccessfulUAT : txtNamesSubscriptionsFailuresUAT;
                     break;
                 case EnvironmentType.Staging:
-                    control = isSuccess ? txtNamesSubscriptionsSuccessfulUAT : txtNamesSubscriptionsFailuresUAT;
+                    control = isSuccess ? txtNamesSubscriptionsSuccessfulSTG : txtNamesSubscriptionsFailuresSTG;
                     break;
                 case EnvironmentType.Production:
                     control = isSuccess ? txtNamesSubscriptionsSuccessfulPRD : txtNamesSubscriptionsFailuresPRD;
+                    break;
+            }
+
+            return control;
+        }
+
+        private Label GetSuccessFailureLabelForEnvironmentAndSuccess(EnvironmentType environment, bool isSuccess)
+        {
+            Label control = null;
+
+            switch (environment)
+            {
+                case EnvironmentType.Development:
+                    control = isSuccess ? lblSubscriptionsSuccessfulDEV : lblSubscriptionsFailuresDEV;
+                    break;
+                case EnvironmentType.UserAcceptanceTesting:
+                    control = isSuccess ? lblSubscriptionsSuccessfulUAT : lblSubscriptionsFailuresUAT;
+                    break;
+                case EnvironmentType.Staging:
+                    control = isSuccess ? lblSubscriptionsSuccessfulSTG : lblSubscriptionsFailuresSTG;
+                    break;
+                case EnvironmentType.Production:
+                    control = isSuccess ? lblSubscriptionsSuccessfulPRD : lblSubscriptionsFailuresPRD;
                     break;
             }
 
@@ -458,17 +478,24 @@ namespace ASB_ManageAzureServicesGetFees
             }
         }
 
-        private void AddEntryToSuccessFailureList(bool isSuccess, string entryValue, EnvironmentType environment)
+        private void UpdateUiForSubscriptionSuccess(bool isSuccess, string entryValue, EnvironmentType environment)
         {
             if (!string.IsNullOrWhiteSpace(entryValue))
             {
                 TextBox control = GetControlForEnvironmentAndSuccess(environment, isSuccess);
+                Label label = GetSuccessFailureLabelForEnvironmentAndSuccess(environment, isSuccess);
 
                 if (control != null)
                 {
                     string currentText = control.TextLength > 0 ? $"{Environment.NewLine}{entryValue}" : entryValue;
 
                     control.AppendText(currentText);
+
+                    int lineCount = control.Lines.Length;
+                    string action = isSuccess ? "Successful" : "Failed";
+                    string text = lineCount > 0 ? $":  {lineCount}" : string.Empty;
+
+                    label.Text = $@"{action}{text}";
                 }
             }
         }
@@ -479,7 +506,6 @@ namespace ASB_ManageAzureServicesGetFees
 
             return control?.Text;
         }
-
 
         #endregion
     }
