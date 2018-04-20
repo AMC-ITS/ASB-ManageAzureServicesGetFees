@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASB_ManageAzureServicesGetFees", "ASB_ManageAzureServicesGetFees\ASB_ManageAzureServicesGetFees.csproj", "{9D2CC102-5FD1-4160-A182-587CEE833D8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D2CC102-5FD1-4160-A182-587CEE833D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D2CC102-5FD1-4160-A182-587CEE833D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D2CC102-5FD1-4160-A182-587CEE833D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D2CC102-5FD1-4160-A182-587CEE833D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72AD6CDF-6A4F-4E7E-8330-EB89524CB473}
+	EndGlobalSection
+EndGlobal

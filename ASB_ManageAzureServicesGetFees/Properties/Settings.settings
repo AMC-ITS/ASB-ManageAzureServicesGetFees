@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AMB_CreateGetFeesSubscriptions.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ASB_KeyValue_DEV" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5dWIatkp9U3qUncbYQmhbdN1JCAnKAEj8Rvzfpa2WoE=</Value>
+    </Setting>
+    <Setting Name="ASB_KeyValue_UAT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5dWIatkp9U3qUncbYQmhbdN1JCAnKAEj8Rvzfpa2WoE=</Value>
+    </Setting>
+    <Setting Name="ASB_KeyValue_STG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5dWIatkp9U3qUncbYQmhbdN1JCAnKAEj8Rvzfpa2WoE=</Value>
+    </Setting>
+    <Setting Name="ASB_KeyValue_PRD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5dWIatkp9U3qUncbYQmhbdN1JCAnKAEj8Rvzfpa2WoE=</Value>
+    </Setting>
+    <Setting Name="ASB_KeyName_DEV" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RootManageSharedAccessKey</Value>
+    </Setting>
+    <Setting Name="ASB_KeyName_UAT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RootManageSharedAccessKey</Value>
+    </Setting>
+    <Setting Name="ASB_KeyName_STG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RootManageSharedAccessKey</Value>
+    </Setting>
+    <Setting Name="ASB_KeyName_PRD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RootManageSharedAccessKey</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
