@@ -220,7 +220,7 @@ namespace ASB_ManageAzureServicesGetFees
                     subscriptionCreated = _namespaceManager.SubscriptionExistsAsync(topicName, subscriptionName).Result;
                     if (!subscriptionCreated)
                     {
-                        _namespaceManager.CreateSubscriptionAsync(topicName, subscriptionName);
+                        _namespaceManager.CreateSubscriptionAsync(topicName, subscriptionName).Wait();
                         subscriptionCreated = _namespaceManager.SubscriptionExistsAsync(topicName, subscriptionName).Result;
                     }
                 }
@@ -245,7 +245,7 @@ namespace ASB_ManageAzureServicesGetFees
                     subscriptionDeleted = !_namespaceManager.SubscriptionExistsAsync(topicName, subscriptionName).Result;
                     if (!subscriptionDeleted)
                     {
-                        _namespaceManager.DeleteSubscriptionAsync(topicName, subscriptionName);
+                        _namespaceManager.DeleteSubscriptionAsync(topicName, subscriptionName).Wait();
                         subscriptionDeleted = !_namespaceManager.SubscriptionExistsAsync(topicName, subscriptionName).Result;
                     }
                 }
